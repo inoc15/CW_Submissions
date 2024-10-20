@@ -20,3 +20,11 @@ public String extraEnd(String str)
   return(str.substring(str.length()-2)+str.substring(str.length()-2)+str.substring(str.length()-2));
 }
 
+
+/*
+* withoutEnd: return word without the first and last letter
+*/ 
+public String withoutEnd(String str) 
+{
+  return (str.substring(1,str.length()-1));
+}
