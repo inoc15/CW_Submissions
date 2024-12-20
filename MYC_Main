@@ -1,0 +1,293 @@
+import java.util.Scanner;
+
+public class MakeYourChoiceGameSimpleMain 
+{
+
+	//scanner as data attribute
+		static Scanner myReader = new Scanner (System.in);
+		
+		static boolean gameContinue=true; 
+		
+		
+		
+		
+	public static void main(String[] args) 
+	{
+		
+		System.out.print("Welcome to Day in the Life of a College Student. Please input your name...\n");
+		String playerInputName = myReader.nextLine();
+		System.out.print("\nNext input your age...\n");
+		int playerInputAge = myReader.nextInt();
+		myReader.nextLine();
+		
+		MakeYourChoiceGameSimpleCharacters player1 = new MakeYourChoiceGameSimpleCharacters(playerInputName, playerInputAge);
+		
+		System.out.print("\nHello "+ player1.getPlayerName() + ", I see you are " + player1.getPlayerAge() + " years old. "
+				+ "Fortunately or unfortunately (depends on how you look at it) \nyou are a freshman at UH Manoa studying "
+				+ "Pre-Med. The goal of this game is to make it through the day, \nand whether you do so will be determined by your grades and health. Good Luck!");
+		
+		while (gameContinue == true)
+		{
+			if (gameContinue == true) 
+			{
+				System.out.print(wakingUp(player1));
+				System.out.print("\n\n"+player1.getPlayerGrades());
+			}
+			
+			if (gameContinue == true)
+			{
+				System.out.print(eatBreakfast());
+			}
+			
+			if (gameContinue == true)
+			{
+			System.out.print(enterClass(player1));
+			}
+			
+			if (gameContinue == true) 
+			{
+				System.out.print("\n\n"+player1.getPlayerGrades());
+			}
+			if (gameContinue == true)
+			{
+				System.out.print(takeTest(player1));
+			}
+		}
+		System.out.print(gameOver());
+		
+		
+				
+				
+		//closes scanner
+		myReader.close();
+	}
+
+	
+	public static String wakingUp(MakeYourChoiceGameSimpleCharacters player)
+	{
+		String name = player.getPlayerName();
+		int grades = player.getPlayerGrades();
+		System.out.print("\n\nRise and Shine " + name + "! It is finals week and today you will be taking your first test. \nTask #1 of the day: Get up at 4:00, 5:00, 6:00, ot 7:00 AM?\n");
+		
+		String userInput = myReader.nextLine();
+		
+		if (userInput.equals("4:00"))
+		{
+			return "\nShucks you woke up so early that now your only half awake. Even if you wanted too, there is no going \n"
+					+ "back to sleep for you. But hey at least you have time to make yourself presentable. If you're gonna fail, \n"
+					+ "might as well look good doing it!";
+		}
+		else if (userInput.equals("5:00"))
+		{
+			
+			return "\nNice job you woke up early so now you have time to study a little more and then get ready.";
+		}
+		else if (userInput.equals("6:00"))
+		{
+			player.setPlayerGrades(grades-10);
+			//get the players grade and store it in a temp variable
+			
+			//subtract ten from the temp grade
+			
+			//use a setter, setting player grade to the temp variable
+			return "\nNot bad for your first task, you have chosen to wake up at the perfect time. You feel rested and have just the \n"
+					+ "right amount of time to get ready.";
+		}
+		else if (userInput.equals("7:00"))
+		{
+			player.setPlayerGrades(grades-10);
+			return "\nShucks looks like you overslept, but hey at least you feel rested. But that also means no time to get ready and \n"
+					+ "you will have to run to class";
+		}
+		else 
+		{
+			gameContinue = false;
+			return "\nInvalid answer, since you don't even know how to read guess that means you probably would have failed so game \n"
+					+ "over. Look at it this way, now you can save money (:";
+		}
+	}
+
+	
+	public static String eatBreakfast()
+	{
+		System.out.print("\n\nYou're on your way to class but your stomach is grumbling. Do you stop by some where on the way there and get food or keep going? (food/go)\n");
+		String userInput = myReader.nextLine();
+		
+		if (userInput.equalsIgnoreCase("food"))
+		{
+			return "\nYou stop by the Starbucks on campus and order a double-smoked bacon, cheddar, and egg sandwich and a grande salted caramel cream cold brew.";
+		}
+		else
+		{
+			return "\nYou choose not to eat and continue on your way to class.\n";
+		}
+	}
+	
+	
+	public static String enterClass(MakeYourChoiceGameSimpleCharacters player)
+	{
+		int grades = player.getPlayerGrades();
+		System.out.print("\n\nRINNNNNNGGGGGGGGGG.......You somehow make it to class just as the bell rings. When you enter the classroom you notice that the desks are set "
+				+ "\nup in a weird arrangement, clusters of three desks are scattered throughout the room; 20 in total. "
+				+ "\nWill you sit towards the back, front, or middle of the room? (back, front, middle)\n");
+		
+		String userInput = myReader.nextLine();
+	
+		if (userInput.equalsIgnoreCase("front"))
+		{
+			player.setPlayerGrades(grades+10);
+			return "\nGood choice, now you are closer to the board and able to see the minute writing in the corner!";
+		}
+		else if (userInput.equalsIgnoreCase("middle"))
+		{
+			return "\nThe middle of the room is very crowded, but you are stuck there because the test is about to start";
+		}
+		else if (userInput.equalsIgnoreCase("back"))
+		{
+			player.setPlayerGrades(grades-10);
+			return "\nInteresting choice...at least its not crowded back there.";
+		}
+		else
+		{
+			gameContinue = false;
+			return "\nInvalid answer, since you don't even know how to read guess that means you probably would have failed this game \n"
+					+ "anyway.";
+		}
+	}
+	
+	
+	
+	public static String takeTest(MakeYourChoiceGameSimpleCharacters player)
+	{
+		int grades = player.getPlayerGrades();
+		
+		System.out.print("\nNow its time to take the test. You must answer a question correctly before moving on to the next question, "
+				+ "there will be five questions in total");
+		String userInput = myReader.nextLine();
+		String isAnswerCorrect = "no";
+		
+		
+		System.out.print("\nAn instrument store gives a 10% discount to all students off the original cost of an instrument. "
+				+ "\nDuring a back to school sale an additional 15% is taken off the discounted price. Julie, a student at "
+				+ "\nthe local high school, purchases a flute for $306. How much did it originally cost?\n A.325\n B.375\n C.400\n D.425\n E.408");
+		for (int x=0; x<=3; x++)
+		{
+			while (isAnswerCorrect.equals("no"))
+			{
+				System.out.print("\nInput an answer");
+				if (userInput.equalsIgnoreCase("a"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else if (userInput.equalsIgnoreCase("b"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else if (userInput.equalsIgnoreCase("c"))
+				{
+					x=4;
+					isAnswerCorrect = "yes";
+					System.out.print("Correct Answer");
+				}
+				else if (userInput.equalsIgnoreCase("d"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else if (userInput.equalsIgnoreCase("e"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else
+				{
+					System.out.print("Invalid Answer. Try Again.");
+					x++;
+				}
+			}		
+		}
+		
+		if (isAnswerCorrect.equalsIgnoreCase("yes"))
+		{
+			player.setPlayerGrades(grades+10);
+		}
+		else
+		{
+			player.setPlayerGrades(grades-10);
+		}
+		
+		
+		isAnswerCorrect = "no";
+		System.out.print("If 5 ounces is equal to 140 grams, then 2 pounds of ground meat is equal to how many grams?\n A.863\n B.878\n C.896\n D.915\n E.932");
+		for (int x=0; x<=3;)
+		{
+			while (isAnswerCorrect.equals("no"))
+			{
+				System.out.print("Input an answer");
+				if (userInput.equalsIgnoreCase("a"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else if (userInput.equalsIgnoreCase("b"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else if (userInput.equalsIgnoreCase("c"))
+				{
+					x=4;
+					isAnswerCorrect = "yes";
+					System.out.print("Correct Answer");
+				}
+				else if (userInput.equalsIgnoreCase("d"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else if (userInput.equalsIgnoreCase("e"))
+				{
+					System.out.print("Wrong Answer");
+					x++;
+				}
+				else
+				{
+					System.out.print("Invalid Answer. Try Again.");
+					x++;
+				}
+				if (isAnswerCorrect.equalsIgnoreCase("yes"))
+				{
+					player.setPlayerGrades(grades+10);
+				}
+				else
+				{
+					player.setPlayerGrades(grades-10);
+				}
+			}
+		}
+		
+		if (isAnswerCorrect.equalsIgnoreCase("yes"))
+		{				
+			player.setPlayerGrades(grades+10);
+		}
+		else
+		{
+			player.setPlayerGrades(grades-10);
+		}
+		
+
+		return isAnswerCorrect;
+		
+	}
+	
+	
+	
+	public static String gameOver()
+	{
+		return "\n\nGAME OVER!";
+	}
+}
+
+
