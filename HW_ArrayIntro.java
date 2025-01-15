@@ -13,7 +13,7 @@ public class ArraysIntro
 		
 		String[] strArr = {};
 		
-	  Circle[] cirArr = {};
+	        Circle[] cirArr = {};
 		
 		//#2 - array of ints with the following values
 		int[] intArray = {7, -12, 88, -88, 0, 5, 2000};
