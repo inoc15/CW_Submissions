@@ -256,21 +256,16 @@ public boolean unlucky1(int[] nums)
     {
       return true;
     }
-    else
-    {
-      return false;
-    }
+    
   }
-   if(nums[nums.length-2]==1)
+  
+  if(nums[nums.length-2]==1)
   {
     if(nums[nums.length-1]==3)
     {
       return true;
     }
-    else
-    {
-      return false;
-    }
+    
   }
   
   
@@ -281,10 +276,7 @@ public boolean unlucky1(int[] nums)
     {
       return true;
     }
-    else 
-    {
-      return false;
-    }
+    
   }
   
   
@@ -292,4 +284,61 @@ public boolean unlucky1(int[] nums)
 }
 
 
+
 //make2
+public int[] make2(int[] a, int[] b) 
+{
+  int[] newArr = new int [2];
+  if (a.length==2)
+  {
+    return a;
+  }
+  else if (a.length==0)
+  {
+    return b;
+  }
+  else if (a.length==3)
+  {
+    newArr[0] = a[0];
+    newArr[1] = a[1];
+    return newArr;
+  }
+  else
+  {
+    newArr[0] = a[0];
+    newArr[1] = b[0];
+    return newArr;
+  }
+
+}
+
+
+//front11
+public int[] front11(int[] a, int[] b) 
+{
+  int[] blankArr = new int [0];
+  if (a.length==0 && b.length==0)
+  {
+    return blankArr;
+  }
+  else if (a.length==0 && b.length!=0)
+  {
+    int[] newArr = new int [1];
+    newArr[0] = b[0];
+    return newArr;
+  }
+  else if (b.length==0 && a.length!=0)
+  {
+    int[] newArr = new int [1];
+    newArr[0] = a[0];
+    return newArr;
+  }
+  else
+  {
+    int[] newArr = new int [2];
+    newArr[0] = a[0];
+    newArr[1] = b[0];
+    return newArr;
+  }
+
+}
